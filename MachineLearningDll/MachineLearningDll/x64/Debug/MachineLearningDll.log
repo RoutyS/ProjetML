@@ -1,0 +1,14 @@
+﻿  LinearModel.cpp
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.cpp(6,110): warning C4273: 'LinearModel::Train' : liaison DLL incohérente
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.h(15,26): message : voir la définition précédente de 'Train'
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.cpp(10,90): warning C4273: 'LinearModel::Predict' : liaison DLL incohérente
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.h(18,41): message : voir la définition précédente de 'Predict'
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.cpp(16,23): warning C4273: 'Create' : liaison DLL incohérente
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.h(22,34): message : voir la définition précédente de 'Create'
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.cpp(20,34): warning C4273: 'Destroy' : liaison DLL incohérente
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.h(23,26): message : voir la définition précédente de 'Destroy'
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.cpp(24,124): warning C4273: 'Entrainement' : liaison DLL incohérente
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.h(24,26): message : voir la définition précédente de 'Entrainement'
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.cpp(28,119): warning C4273: 'Prediction' : liaison DLL incohérente
+C:\Users\Enola\source\repos\MachineLearningDll\MachineLearningDll\LinearModel.h(25,26): message : voir la définition précédente de 'Prediction'
+  MachineLearningDll.vcxproj -> C:\Users\Enola\source\repos\MachineLearningDll\x64\Debug\MachineLearningDll.dll
