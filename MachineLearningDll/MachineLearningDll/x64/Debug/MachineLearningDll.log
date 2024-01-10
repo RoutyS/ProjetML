@@ -1,62 +1,12 @@
 ﻿  LinearModel.cpp
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(6,95): warning C4273: 'LinearModel::Train' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(6,129): warning C4273: 'LinearModel::Train' : liaison DLL incohérente
 D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(12,26): message : voir la définition précédente de 'Train'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(61,21): warning C4273: 'Init' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(59,21): warning C4273: 'Init' : liaison DLL incohérente
 D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(24,43): message : voir la définition précédente de 'Init'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(65,35): warning C4273: 'Detruire' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(63,35): warning C4273: 'Detruire' : liaison DLL incohérente
 D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(26,36): message : voir la définition précédente de 'Detruire'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(69,109): warning C4273: 'Entrainement' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(67,142): warning C4273: 'Entrainement' : liaison DLL incohérente
 D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(28,35): message : voir la définition précédente de 'Entrainement'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(75,104): warning C4273: 'Prediction' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(73,104): warning C4273: 'Prediction' : liaison DLL incohérente
 D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(30,36): message : voir la définition précédente de 'Prediction'
-  PMC.cpp
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(12,1): error C2011: 'PMC' : redéfinition du type 'class'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(11,6): error C2027: utilisation du type non défini 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(11,39): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(11,58): error C2550: '{ctor}' : les listes d'initialiseurs de constructeur ne sont autorisées que dans la définition d'un constructeur
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(26,9): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(27,9): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(28,9): error C2065: 'deltas' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(30,1): warning C4508: '{ctor}' : la fonction doit retourner une valeur ; type de retour 'void' pris par défaut
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(32,13): error C2027: utilisation du type non défini 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(37,13): error C2027: utilisation du type non défini 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(42,11): error C2027: utilisation du type non défini 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(44,5): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(46,5): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(47,5): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(47,27): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(49,28): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(50,32): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(52,37): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(53,31): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(53,54): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(55,13): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(60,26): error C2027: utilisation du type non défini 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(63,32): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(63,64): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(66,11): error C2027: utilisation du type non défini 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(2): message : voir la déclaration de 'PMC'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(76,36): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(77,54): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(78,17): error C2065: 'deltas' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(78,70): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(82,26): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(83,40): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(85,44): error C2065: 'layer_sizes' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(86,34): error C2065: 'deltas' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(86,53): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(88,21): error C2065: 'deltas' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(88,66): error C2065: 'activations' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(93,36): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(94,40): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(95,44): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(96,25): error C2065: 'weights' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(96,53): error C2065: 'deltas' : identificateur non déclaré
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(96,72): error C2065: 'activations' : identificateur non déclaré
-  Génération de code en cours...
+  MachineLearningDll.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll

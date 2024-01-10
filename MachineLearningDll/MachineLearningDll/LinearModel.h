@@ -9,7 +9,7 @@
 class LinearModel {
 public:
 
-    LINEARMODEL_API void Train(const std::vector<std::vector<double>>& X_train, const std::vector<double>& y_train);
+    LINEARMODEL_API void Train(const std::vector<std::vector<double>>& X_train, const std::vector<double>& y_train, double learning_rate, int epoch);
 
 
     std::vector<double> Predict(const std::vector<std::vector<double>>& X_test);
@@ -25,6 +25,6 @@ extern "C" LINEARMODEL_API  LinearModel * Init();
 
 extern "C"    LINEARMODEL_API void Detruire(LinearModel * model);
 
-extern "C"   LINEARMODEL_API void Entrainement(LinearModel * model, const std::vector<std::vector<double>>&X_train, const std::vector<double>&y_train);
+extern "C"   LINEARMODEL_API void Entrainement(LinearModel * model, const std::vector<std::vector<double>>&X_train, const std::vector<double>&y_train, double learning_rate, int epoch);
 
 extern "C"    LINEARMODEL_API void Prediction(LinearModel * model, const std::vector<std::vector<double>>&X_test, std::vector<double>&predictions);

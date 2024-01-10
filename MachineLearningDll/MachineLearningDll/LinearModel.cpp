@@ -3,14 +3,12 @@
 #include <iostream>
 
 using namespace std; 
-void LinearModel::Train(const vector<vector<double>>& X_train, const vector<double>& y_train) {
+void LinearModel::Train(const vector<vector<double>>& X_train, const vector<double>& y_train,double learning_rate , int epoch ) {
   
     poids.assign(X_train[0].size(), 0.0); 
     bias = 0.0;
 	
-    double learning_rate = 0.01;
-    int epoch = 1000;
-
+     
     int nb_echantillons = static_cast<int>(X_train.size());
     int num_features = static_cast<int>(X_train[0].size());
 	
@@ -66,9 +64,9 @@ void Detruire(LinearModel* model) {
     delete model;
 }
 
-void Entrainement(LinearModel* model, const vector<vector<double>>& X_train, const vector<double>& y_train) {
+void Entrainement(LinearModel* model, const vector<vector<double>>& X_train, const vector<double>& y_train, double learning_rate, int epoch) {
    
-    model->Train(X_train, y_train);
+    model->Train(X_train, y_train,  learning_rate,  epoch);
 }
 
 
