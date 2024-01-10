@@ -31,4 +31,4 @@
 *.out
 *.app
 
-MachineLearningDll/.vs/MachineLearningDll/v17/Browse.VC.opendb
+*.opendb 
