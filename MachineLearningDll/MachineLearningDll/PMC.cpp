@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "PMC.h"
-#include <vector>
 #include <iostream>
 #include <cmath>
 #include <random>

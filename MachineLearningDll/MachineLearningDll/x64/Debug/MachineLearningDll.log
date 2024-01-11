@@ -1,17 +1,1 @@
-﻿  pch.cpp
-  LinearModel.cpp
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(6,129): warning C4273: 'LinearModel::Train' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(12,26): message : voir la définition précédente de 'Train'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(59,21): warning C4273: 'Init' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(24,43): message : voir la définition précédente de 'Init'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(63,35): warning C4273: 'Detruire' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(26,36): message : voir la définition précédente de 'Detruire'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(67,142): warning C4273: 'Entrainement' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(28,35): message : voir la définition précédente de 'Entrainement'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(73,104): warning C4273: 'Prediction' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(30,36): message : voir la définition précédente de 'Prediction'
-  dllmain.cpp
-  Génération de code en cours...
-  LINK : D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-     Création de la bibliothèque D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.lib et de l'objet D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.exp
-  MachineLearningDll.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
+﻿  MachineLearningDll.vcxproj -> C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
