@@ -25,6 +25,8 @@ extern "C" {
     PMC_API void TrainPMC(void* pmc, double* inputs, int input_width, int input_height, const double* expected_outputs, int output_size, double alpha, int max_iter);
     PMC_API int PredictionPMCSize(void* pmc);
     PMC_API double* PredictPMC(void* pmc, const double* input, int input_size);
+    PMC_API void DestroyPMC(void* pmc);
+
 
 #ifdef __cplusplus
 }
@@ -47,6 +49,7 @@ public:
     void train(double* inputs, int input_width, int input_height, const double* expected_outputs, int output_size, double alpha, int max_iter);
     double* predict(const double* input, int input_size);
     int getPredictionSize() const;
+    void destroy();
 
 private:
     double activation_function(double x);

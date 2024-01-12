@@ -152,101 +152,49 @@ int Cas3() {
 }
 
 
-
-/*
 int Cas1PMC() {
-    // Données d'entraînement
-    std::vector<std::vector<double>> X_train = {
-        {1, 1},
-        {2, 3},
-        {3, 3}
-    };
-    std::vector<double> y_train = { 1, -1, -1 };
+    // Création d'une PMC avec une architecture spécifique (à remplacer par vos valeurs)
+    int layer_sizes[] = { 2, 4, 1 }; // Exemple d'architecture avec 2 neurones en entrée, 4 dans une couche cachée et 1 en sortie
+    int num_layers = 3; // Nombre total de couches
 
-    // Affichage des points d'entraînement en couleur
-    std::cout << "Points X_train en couleur :" << std::endl;
-    for (size_t i = 0; i < X_train.size(); ++i) {
-        // Vérification pour éviter tout accès hors limites
-        if (i < y_train.size()) {
-            printColoredPoint(X_train[i][0], X_train[i][1], y_train[i]);
-        }
+    void* pmc = CreatePMC(layer_sizes, num_layers);
+
+    // Entrées d'apprentissage
+    double X_train[] = { 1, 1, 2, 3, 3, 3 }; // Exemple de données d'entrée
+    int input_width = 2; // Nombre de caractéristiques par échantillon (dans cet exemple, 2D)
+    int input_height = 3; // Nombre total d'échantillons
+
+    // Sorties attendues
+    double y_train[] = { 1, -1, -1 }; // Exemple de sorties attendues
+
+    // Entraînement de la PMC avec les données fournies
+    double learning_rate = 0.01;
+    int max_iter = 10000;
+    TrainPMC(pmc, X_train, input_width, input_height, y_train, 1, learning_rate, max_iter);
+
+    // Prédictions avec la PMC
+    double X_test[] = { 1.0, 1.0, 2.6, 3.0, 3.0, 3.0 }; // Exemple de données de test
+    int input_size = 2; // Nombre de caractéristiques par échantillon dans les données de test
+
+    double* raw_predictions = PredictPMC(pmc, X_test, input_size);
+
+    // Affichage des prédictions (à adapter en fonction de votre application)
+    std::cout << "Predictions:" << std::endl;
+    for (int i = 0; i < input_height; ++i) {
+        std::cout << raw_predictions[i] << std::endl;
     }
 
-    // Initialisation et configuration du PMC (Perceptron Multicouche)
-    std::vector<int> layers = { 2, 2, 1 }; // Exemple de structure du PMC
-    PMC mlp(layers);
-
-    // Entraînement du PMC
-    double alpha = 0.01; // Taux d'apprentissage
-    int max_iter = 10000; // Nombre d'itérations
-    mlp.train(X_train, y_train, alpha, max_iter);
-
-    // Données de test et prédiction
-    std::vector<std::vector<double>> X_test = {
-        {1.0, 1.0},
-        {2.0, 3.0},
-        {3.0, 3.0}
-    };
-    std::cout << "Prédictions :" << std::endl;
-    for (const auto& x : X_test) {
-        std::vector<double> prediction = mlp.predict(x);
-        std::cout << (prediction.front() > 0 ? 1 : -1) << std::endl;
-    }
+    // Libérer la mémoire de la PMC
+    DestroyPMC(pmc);
 
     return 0;
-}*/
-/*
-int Cas1PMC() {
-    // Données d'entraînement
-    std::vector<std::vector<double>> X_train = {
-        {1, 1},
-        {2, 3},
-        {3, 3}
-    };
-    std::vector<double> y_train = { 1, -1, -1 };
-
-    // Vérifiez que le nombre de points d'entraînement correspond au nombre d'étiquettes
-    assert(X_train.size() == y_train.size() && "Le nombre de points d'entraînement doit correspondre au nombre d'étiquettes.");
-
-    // Initialisation et configuration du PMC
-    std::vector<int> layers = { 2, 2, 1 }; // Assurez-vous que cela correspond à la structure de votre réseau
-    PMC mlp(layers);
-
-    // Assurez-vous que la taille de la couche d'entrée correspond au nombre de caractéristiques de chaque point d'entraînement
-    assert(layers.front() == X_train.front().size() && "La taille de la couche d'entrée doit correspondre au nombre de caractéristiques d'entrée.");
-
-    // Entraînement du PMC
-    double alpha = 0.01; // Taux d'apprentissage
-    int max_iter = 10000; // Nombre d'itérations
-    mlp.train(X_train, y_train, alpha, max_iter);
-
-    // Données de test et prédiction
-    std::vector<std::vector<double>> X_test = {
-        {1.0, 1.0},
-        {2.0, 3.0},
-        {3.0, 3.0}
-    };
-
-    // Vérifiez que chaque point de test a la même dimension que la couche d'entrée du PMC
-    for (const auto& test_point : X_test) {
-        assert(test_point.size() == layers.front() && "Chaque point de test doit avoir la même dimension que la couche d'entrée du PMC.");
-    }
-
-    std::cout << "Prédictions :" << std::endl;
-    for (const auto& x : X_test) {
-        std::vector<double> prediction = mlp.predict(x);
-        std::cout << (prediction.front() > 0 ? 1 : -1) << std::endl;
-    }
-
-    return 0;
-}*/
-
+}
 
 int main() {
-    Cas1();
+    //Cas1();
     //Cas2();
     //Cas3();
-    //Cas1PMC();
+    Cas1PMC();
 
     return 0;
 }

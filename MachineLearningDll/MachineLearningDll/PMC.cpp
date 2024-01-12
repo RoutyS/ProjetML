@@ -175,6 +175,29 @@ int PMC::getPredictionSize() const {
     return size_of_predictions;
 }
 
+void PMC::destroy() {
+    // Libérer la mémoire allouée pour layer_sizes
+    delete[] layer_sizes;
+
+    // Libérer la mémoire allouée pour weights
+    for (int i = 0; i < num_layers - 1; ++i) {
+        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
+            delete[] weights[i][j];
+        }
+        delete[] weights[i];
+    }
+    delete[] weights;
+
+    // Libérer la mémoire allouée pour activations et deltas
+    for (int i = 0; i < num_layers; ++i) {
+        delete[] activations[i];
+        delete[] deltas[i];
+    }
+    delete[] activations;
+    delete[] deltas;
+}
+
+
 extern "C" {
 
     void* CreatePMC(const int* npl, int size) {
@@ -194,6 +217,10 @@ extern "C" {
 
     double* PredictPMC(void* pmc, const double* input, int inputSize) {
         return static_cast<PMC*>(pmc)->predict(input, inputSize);
+    }
+
+    void DestroyPMC(void* pmc) {
+        delete static_cast<PMC*>(pmc);
     }
 
 }

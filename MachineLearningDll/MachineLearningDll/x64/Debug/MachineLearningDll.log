@@ -1,11 +1,13 @@
 ﻿  PMC.cpp
-C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(180,11): warning C4273: 'CreatePMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(203,11): warning C4273: 'CreatePMC' : liaison DLL incohérente
 C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(24,19): message : voir la définition précédente de 'CreatePMC'
-C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(184,10): warning C4273: 'TrainPMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(207,10): warning C4273: 'TrainPMC' : liaison DLL incohérente
 C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(25,18): message : voir la définition précédente de 'TrainPMC'
-C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(188,9): warning C4273: 'PredictionPMCSize' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(211,9): warning C4273: 'PredictionPMCSize' : liaison DLL incohérente
 C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(26,17): message : voir la définition précédente de 'PredictionPMCSize'
-C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(195,13): warning C4273: 'PredictPMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(218,13): warning C4273: 'PredictPMC' : liaison DLL incohérente
 C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(27,21): message : voir la définition précédente de 'PredictPMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(222,10): warning C4273: 'DestroyPMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(28,18): message : voir la définition précédente de 'DestroyPMC'
      Création de la bibliothèque C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.lib et de l'objet C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.exp
   MachineLearningDll.vcxproj -> C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
