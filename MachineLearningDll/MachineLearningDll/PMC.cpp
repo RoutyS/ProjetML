@@ -5,10 +5,9 @@
 #include <random>
 #include <cassert>
 #include <algorithm> 
-#include <functional> 
+#include <functional>
 
 using namespace std;
-
 
 PMC::PMC(const int* layer_sizes, int num_layers) {
     // ... implémentation de la construction, allocation de mémoire, etc.
@@ -23,6 +22,8 @@ PMC::PMC(const int* layer_sizes, int num_layers) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(-1.0, 1.0);
+
+    size_of_predictions = layer_sizes[num_layers - 1];
 
     // Allocation de weights
     weights = new double** [num_layers - 1];
@@ -169,6 +170,10 @@ void PMC::update_weights(double alpha) {
     }
 }
 
+int PMC::getPredictionSize() const {
+    // Retournez la taille des prédictions en utilisant la variable membre
+    return size_of_predictions;
+}
 
 extern "C" {
 

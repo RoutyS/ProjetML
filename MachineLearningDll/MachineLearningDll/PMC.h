@@ -38,7 +38,8 @@ private:
     int num_layers;
     double*** weights; 
     double** activations; 
-    double** deltas;  
+    double** deltas;
+    int size_of_predictions;
 
 public:
     PMC(const int* layer_sizes, int num_layers);
