@@ -9,27 +9,6 @@
 
 using namespace std;
 
-class PMC {
-private:
-    int* layer_sizes;
-    int num_layers;
-    double*** weights;
-    double** activations;
-    double** deltas;
-
-public:
-    PMC(const int* layer_sizes, int num_layers);
-    ~PMC();
-    void train(double* inputs, int input_width, int input_height, const double* expected_outputs, int outputs_size, double alpha, int max_iter);
-    double* predict(const double* input, int input_size);
-
-private:
-    void forward_propagate(const double* input);
-    void back_propagate(const double* expected_outputs);
-    void update_weights(double alpha);
-    double activation_function(double x);
-    double activation_derivative(double x);
-};
 
 PMC::PMC(const int* layer_sizes, int num_layers) {
     // ... implémentation de la construction, allocation de mémoire, etc.
@@ -202,7 +181,10 @@ extern "C" {
     }
 
     int PredictionPMCSize(void* pmc) {
-        // ... implémentation pour retourner la taille des prédictions ...
+        // Appelez la fonction de la classe PMC pour obtenir la taille des prédictions
+        int predictionSize = static_cast<PMC*>(pmc)->getPredictionSize();
+
+        return predictionSize;
     }
 
     double* PredictPMC(void* pmc, const double* input, int inputSize) {

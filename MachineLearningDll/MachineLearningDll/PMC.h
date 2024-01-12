@@ -45,11 +45,15 @@ public:
     ~PMC();  // Définissez un destructeur pour gérer la mémoire
     void train(double* inputs, int input_width, int input_height, const double* expected_outputs, int output_size, double alpha, int max_iter);
     double* predict(const double* input, int input_size);
+    int getPredictionSize() const;
 
 private:
     double activation_function(double x);
     double activation_derivative(double x);
-    void forward_propagate(const std::vector<double>& input);
+    void forward_propagate(const double* input);
+    void back_propagate(const double* expected_outputs);
+    void update_weights(double alpha);
+
 };
 
 #endif // PMC_H
