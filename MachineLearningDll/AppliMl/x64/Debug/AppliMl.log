@@ -1,4 +1,4 @@
 ﻿  AppliMl.cpp
-C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\AppliMl\AppliMl.cpp(23,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\AppliMl\AppliMl.cpp(148): warning C4715: 'Cas3' : les chemins de contrôle ne retournent pas tous une valeur
-  AppliMl.vcxproj -> C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\x64\Debug\AppliMl.exe
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\AppliMl\AppliMl.cpp(27,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\AppliMl\AppliMl.cpp(152): warning C4715: 'Cas3' : les chemins de contrôle ne retournent pas tous une valeur
+  AppliMl.vcxproj -> C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\x64\Debug\AppliMl.exe

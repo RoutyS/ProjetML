@@ -7,102 +7,207 @@
 #include <algorithm> 
 #include <functional> 
 
-PMC::PMC(const std::vector<int>& npl) : layer_sizes(npl) {
-    // Initialisation des poids et des autres membres
+using namespace std;
+
+class PMC {
+private:
+    int* layer_sizes;
+    int num_layers;
+    double*** weights;
+    double** activations;
+    double** deltas;
+
+public:
+    PMC(const int* layer_sizes, int num_layers);
+    ~PMC();
+    void train(double* inputs, int input_width, int input_height, const double* expected_outputs, int outputs_size, double alpha, int max_iter);
+    double* predict(const double* input, int input_size);
+
+private:
+    void forward_propagate(const double* input);
+    void back_propagate(const double* expected_outputs);
+    void update_weights(double alpha);
+    double activation_function(double x);
+    double activation_derivative(double x);
+};
+
+PMC::PMC(const int* layer_sizes, int num_layers) {
+    // ... implémentation de la construction, allocation de mémoire, etc.
+    this->num_layers = num_layers;
+
+    // Allocation de layer_sizes
+    this->layer_sizes = new int[num_layers];
+    for (int i = 0; i < num_layers; ++i) {
+        this->layer_sizes[i] = layer_sizes[i];
+    }
+
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(-1.0, 1.0);
 
-    for (size_t i = 1; i < npl.size(); ++i) {
-        std::vector<std::vector<double>> layer_weights;
-        for (int j = 0; j < npl[i]; ++j) {
-            std::vector<double> neuron_weights;
-            for (int k = 0; k <= npl[i - 1]; ++k) {
-                neuron_weights.push_back(dis(gen));
+    // Allocation de weights
+    weights = new double** [num_layers - 1];
+    for (int i = 0; i < num_layers - 1; ++i) {
+        weights[i] = new double* [layer_sizes[i + 1]];
+        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
+            weights[i][j] = new double[layer_sizes[i] + 1];
+            // Initialisation des poids
+            for (int k = 0; k <= layer_sizes[i]; ++k) {
+                weights[i][j][k] = dis(gen); // Assigner une valeur aléatoire au poids
             }
-            layer_weights.push_back(neuron_weights);
         }
-        weights.push_back(layer_weights);
-        activations.push_back(std::vector<double>(npl[i] + 1, 1.0));
-        deltas.push_back(std::vector<double>(npl[i] + 1, 0.0));
     }
+
+    // Allocation et initialisation de activations et deltas
+    activations = new double* [num_layers];
+    deltas = new double* [num_layers];
+    for (int i = 0; i < num_layers; ++i) {
+        activations[i] = new double[layer_sizes[i] + 1];
+        deltas[i] = new double[layer_sizes[i] + 1];
+        // Initialisation des activations et deltas
+        for (int j = 0; j <= layer_sizes[i]; ++j) {
+            activations[i][j] = 1.0; // ou une autre valeur initiale
+            deltas[i][j] = 0.0;
+        }
+    }
+}
+
+PMC::~PMC() {
+    // ... implémentation de la destruction, libération de mémoire, etc.
+     // Libérer la mémoire allouée pour layer_sizes
+    delete[] layer_sizes;
+
+    // Libérer la mémoire allouée pour weights
+    for (int i = 0; i < num_layers - 1; ++i) {
+        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
+            delete[] weights[i][j];
+        }
+        delete[] weights[i];
+    }
+    delete[] weights;
+
+    // Libérer la mémoire allouée pour activations et deltas
+    for (int i = 0; i < num_layers; ++i) {
+        delete[] activations[i];
+        delete[] deltas[i];
+    }
+    delete[] activations;
+    delete[] deltas;
+}
+
+void PMC::train(double* inputs, int input_width, int input_height, const double* expected_outputs, int outputs_size, double alpha, int max_iter) {
+    // Boucle sur le nombre d'itérations
+    for (int iter = 0; iter < max_iter; ++iter) {
+        // Boucle sur chaque échantillon d'entrée
+        for (int i = 0; i < input_height; ++i) {
+            // Propagation avant
+            forward_propagate(inputs + i * input_width);
+
+            // Propagation arrière et mise à jour des poids
+            back_propagate(expected_outputs + i * outputs_size);
+            update_weights(alpha);
+        }
+        // Eventuellement, imprimer la progression de l'entraînement ici
+    }
+}
+
+double* PMC::predict(const double* input, int input_size) {
+    // Propagation avant avec l'entrée donnée
+    forward_propagate(input);
+
+    // Retourner les activations de la dernière couche (sortie du réseau)
+    double* output = new double[layer_sizes[num_layers - 1]];
+    for (int i = 0; i < layer_sizes[num_layers - 1]; ++i) {
+        output[i] = activations[num_layers - 1][i];
+    }
+    return output;
 }
 
 double PMC::activation_function(double x) {
-    // Code de la fonction d'activation (par exemple, la tangente hyperbolique)
-    return std::tanh(x);
+    // Fonction sigmoid comme exemple
+    return 1.0 / (1.0 + exp(-x));
 }
 
 double PMC::activation_derivative(double x) {
-    // Code de la dérivée de la fonction d'activation
-    return 1.0 - x * x;
+    // Dérivée de la fonction sigmoid
+    return x * (1.0 - x);
 }
 
-void PMC::forward_propagate(const std::vector<double>& input) {
-    // Code de la propagation avant
-    assert(input.size() == layer_sizes[0]);
+void PMC::forward_propagate(const double* input) {
+    // La première couche d'activations est simplement l'entrée
+    for (int i = 0; i < layer_sizes[0]; ++i) {
+        activations[0][i] = input[i];
+    }
 
-    activations[0] = std::vector<double>(input.begin(), input.end());
-    activations[0].insert(activations[0].begin(), 1.0);
+    // Boucle sur les couches cachées et la couche de sortie
+    for (int i = 1; i < num_layers; ++i) {
+        for (int j = 0; j < layer_sizes[i]; ++j) {
+            double net_input = 0.0;
 
-    for (size_t i = 1; i < layer_sizes.size(); ++i) {
-        for (size_t j = 0; j < layer_sizes[i]; ++j) {
-            double activation = 0.0;
-            for (size_t k = 0; k <= layer_sizes[i - 1]; ++k) {
-                activation += weights[i - 1][j][k] * activations[i - 1][k];
+            // Calculer la somme pondérée des entrées avec les poids associés
+            for (int k = 0; k <= layer_sizes[i - 1]; ++k) {
+                net_input += weights[i - 1][j][k] * activations[i - 1][k];
             }
-            activations[i][j + 1] = activation_function(activation);
+
+            // Appliquer la fonction d'activation à la somme pondérée
+            activations[i][j] = activation_function(net_input);
         }
     }
 }
 
-std::vector<double> PMC::predict(const std::vector<double>& input) {
-    // Code de la prédiction
-    forward_propagate(input);
-    return std::vector<double>(activations.back().begin() + 1, activations.back().end());
+void PMC::back_propagate(const double* expected_outputs) {
+    // Calculer les deltas pour la couche de sortie
+    for (int i = 0; i < layer_sizes[num_layers - 1]; ++i) {
+        // Utiliser la dérivée de la fonction d'activation
+        deltas[num_layers - 1][i] = activation_derivative(activations[num_layers - 1][i]) * (expected_outputs[i] - activations[num_layers - 1][i]);
+    }
+
+    // Propagation des deltas vers les couches cachées
+    for (int i = num_layers - 2; i > 0; --i) {
+        for (int j = 0; j < layer_sizes[i]; ++j) {
+            double error_sum = 0.0;
+
+            // Calculer la somme pondérée des erreurs des couches suivantes
+            for (int k = 0; k < layer_sizes[i + 1]; ++k) {
+                error_sum += weights[i][k][j] * deltas[i + 1][k];
+            }
+
+            // Utiliser la dérivée de la fonction d'activation
+            deltas[i][j] = activation_derivative(activations[i][j]) * error_sum;
+        }
+    }
 }
 
-void PMC::train(const std::vector<std::vector<double>>& inputs,
-    const std::vector<double>& expected_outputs,
-    double alpha, int max_iter) {
-    // Code de l'entraînement
-    for (int iter = 0; iter < max_iter; ++iter) {
-        double total_error = 0.0;
-
-        for (size_t i = 0; i < inputs.size(); ++i) {
-            forward_propagate(inputs[i]);
-
-            for (size_t j = 0; j < layer_sizes.back(); ++j) {
-                double error = expected_outputs[i] - activations.back()[j + 1];
-                deltas.back()[j + 1] = error * activation_derivative(activations.back()[j + 1]);
-                total_error += error * error;
-            }
-
-            for (int l = layer_sizes.size() - 2; l >= 0; --l) {
-                for (size_t j = 0; j < layer_sizes[l]; ++j) {
-                    double error = 0.0;
-                    for (size_t k = 0; k < layer_sizes[l + 1]; ++k) {
-                        error += deltas[l + 1][k] * weights[l][k][j];
-                    }
-                    deltas[l][j] = error * activation_derivative(activations[l][j]);
-                }
-            }
-
-            const double SOME_THRESHOLD = 0.001;
-            for (size_t l = 0; l < weights.size(); ++l) {
-                for (size_t j = 0; j < weights[l].size(); ++j) {
-                    for (size_t k = 0; k < weights[l][j].size(); ++k) {
-                        weights[l][j][k] += alpha * deltas[l + 1][j] * activations[l][k];
-                        if (total_error / inputs.size() < SOME_THRESHOLD) {
-                            break;
-                        }
-                    }
-                }
-            }
-            std::cout << "Epoch " << iter << " - Average Error: " << total_error / inputs.size() << std::endl;
-            if (total_error / inputs.size() < SOME_THRESHOLD) {
-                break;
+void PMC::update_weights(double alpha) {
+    // Mise à jour des poids pour chaque connexion entre les neurones
+    for (int i = 0; i < num_layers - 1; ++i) {
+        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
+            for (int k = 0; k <= layer_sizes[i]; ++k) {
+                // Mettre à jour les poids en utilisant le taux d'apprentissage et les deltas
+                weights[i][j][k] += alpha * deltas[i + 1][j] * activations[i][k];
             }
         }
     }
 }
+
+
+extern "C" {
+
+    void* CreatePMC(const int* npl, int size) {
+        return new PMC(npl, size);
+    }
+
+    void TrainPMC(void* pmc, double* inputs, int inputWidth, int inputHeight, const double* expected_outputs, int outputsSize, double alpha, int max_iter) {
+        static_cast<PMC*>(pmc)->train(inputs, inputWidth, inputHeight, expected_outputs, outputsSize, alpha, max_iter);
+    }
+
+    int PredictionPMCSize(void* pmc) {
+        // ... implémentation pour retourner la taille des prédictions ...
+    }
+
+    double* PredictPMC(void* pmc, const double* input, int inputSize) {
+        return static_cast<PMC*>(pmc)->predict(input, inputSize);
+    }
+
+}
+

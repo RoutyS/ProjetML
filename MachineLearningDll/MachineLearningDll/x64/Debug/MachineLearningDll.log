@@ -1,1 +1,107 @@
-﻿  MachineLearningDll.vcxproj -> C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
+﻿  PMC.cpp
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(12,11): error C2011: 'PMC' : redéfinition du type 'class'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(34,6): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(34,50): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(36,5): error C2355: 'this' : ne peut être référencé qu'à l'intérieur de fonctions membres non static ou d'initialiseurs de membres de données non static
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(39,5): error C2355: 'this' : ne peut être référencé qu'à l'intérieur de fonctions membres non static ou d'initialiseurs de membres de données non static
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(41,9): error C2355: 'this' : ne peut être référencé qu'à l'intérieur de fonctions membres non static ou d'initialiseurs de membres de données non static
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(49,5): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(51,9): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(53,13): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(56,17): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(62,5): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(63,5): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(65,9): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(66,9): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(69,13): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(70,13): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(73,1): warning C4508: '{ctor}' : la fonction doit retourner une valeur ; type de retour 'void' pris par défaut
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(75,7): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(75,13): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(78,14): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(78,25): error C2541: 'delete' : impossible de détruire des objets qui ne sont pas des pointeurs
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(81,25): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(82,29): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(83,22): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(85,18): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(87,14): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(87,21): error C2541: 'delete' : impossible de détruire des objets qui ne sont pas des pointeurs
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(90,25): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(91,18): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(92,18): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(94,14): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(94,25): error C2541: 'delete' : impossible de détruire des objets qui ne sont pas des pointeurs
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(95,14): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(95,20): error C2541: 'delete' : impossible de détruire des objets qui ne sont pas des pointeurs
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(96,1): warning C4508: '{dtor}' : la fonction doit retourner une valeur ; type de retour 'void' pris par défaut
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(98,11): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(104,13): error C3861: 'forward_propagate' : identificateur introuvable
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(107,13): error C3861: 'back_propagate' : identificateur introuvable
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(108,13): error C3861: 'update_weights' : identificateur introuvable
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(114,14): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(116,5): error C3861: 'forward_propagate' : identificateur introuvable
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(119,33): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(119,45): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(119,61): error C3078: la taille de tableau doit être spécifiée dans les nouvelles expressions sans initialiseur
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(120,25): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(120,37): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(121,21): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(121,33): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(126,13): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(131,13): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(136,11): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(138,25): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(139,9): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(143,25): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(144,29): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(148,34): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(149,30): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(149,53): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(153,13): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(158,11): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(160,25): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(160,37): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(162,9): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(162,16): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(162,59): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(162,71): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(162,116): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(162,128): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(166,18): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(167,29): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(171,33): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(172,30): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(172,49): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(176,13): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(176,50): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(181,11): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(183,25): error C2065: 'num_layers' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(184,29): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(185,34): error C2065: 'layer_sizes' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(187,17): error C2065: 'weights' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(187,45): error C2065: 'deltas' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(187,64): error C2065: 'activations' : identificateur non déclaré
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(196,11): warning C4273: 'CreatePMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(24,19): message : voir la définition précédente de 'CreatePMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(197,34): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(200,10): warning C4273: 'TrainPMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(25,18): message : voir la définition précédente de 'TrainPMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(201,31): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(204,9): warning C4273: 'PredictionPMCSize' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(26,17): message : voir la définition précédente de 'PredictionPMCSize'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(208,13): warning C4273: 'PredictPMC' : liaison DLL incohérente
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(27,21): message : voir la définition précédente de 'PredictPMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(209,38): error C2027: utilisation du type non défini 'PMC'
+C:\Users\ruth9\OneDrive - lyceeort\Documents\GitHub\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(35,7): message : voir la déclaration de 'PMC'
