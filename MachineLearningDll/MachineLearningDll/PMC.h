@@ -1,4 +1,4 @@
-
+//Created by Ruth
 #ifndef PMC_H
 #define PMC_H
 
@@ -45,7 +45,7 @@ private:
 
 public:
     PMC(const int* layer_sizes, int num_layers);
-    ~PMC();  // Définissez un destructeur pour gérer la mémoire
+    ~PMC();  
     void train(double* inputs, int input_width, int input_height, const double* expected_outputs, int output_size, double alpha, int max_iter);
     double* predict(const double* input, int input_size);
     int getPredictionSize() const;
@@ -60,4 +60,4 @@ private:
 
 };
 
-#endif // PMC_H
+#endif
