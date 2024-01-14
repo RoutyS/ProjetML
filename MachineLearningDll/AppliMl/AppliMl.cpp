@@ -82,7 +82,7 @@ int Cas1() {
 
     LinearModel* model = Init();
     double learning_rate = 0.01;
-    int epoch = 10000;
+    int epoch = 100000;
     Entrainement(model, &X_train_data[0][0], 3, 2, y_train_data, learning_rate, epoch);
 
     double X_test_data[3][2] = {
@@ -180,8 +180,8 @@ int Cas1PMC() {
 }
 
 int main() {
-    //Cas1();
-    Cas2();
+    Cas1();
+    //Cas2();
     //Cas3();
     //Cas1PMC();
 

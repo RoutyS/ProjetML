@@ -1,1 +1,26 @@
-﻿  MachineLearningDll.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
+﻿  LinearModel.cpp
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(9,139): warning C4273: 'LinearModel::Train' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(11,26): message : voir la définition précédente de 'Train'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(52,105): warning C4273: 'LinearModel::Predict' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(13,26): message : voir la définition précédente de 'Predict'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(62,21): warning C4273: 'Init' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(20,42): message : voir la définition précédente de 'Init'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(66,35): warning C4273: 'Detruire' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(22,33): message : voir la définition précédente de 'Detruire'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(70,153): warning C4273: 'Entrainement' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(24,33): message : voir la définition précédente de 'Entrainement'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(74,115): warning C4273: 'Prediction' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(26,33): message : voir la définition précédente de 'Prediction'
+  PMC.cpp
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(199,47): warning C4273: 'CreatePMC' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(24,19): message : voir la définition précédente de 'CreatePMC'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(203,156): warning C4273: 'TrainPMC' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(25,18): message : voir la définition précédente de 'TrainPMC'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(207,38): warning C4273: 'PredictionPMCSize' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(26,17): message : voir la définition précédente de 'PredictionPMCSize'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(213,71): warning C4273: 'PredictPMC' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(27,21): message : voir la définition précédente de 'PredictPMC'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.cpp(217,32): warning C4273: 'DestroyPMC' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\PMC.h(28,18): message : voir la définition précédente de 'DestroyPMC'
+  Génération de code en cours...
+  MachineLearningDll.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
