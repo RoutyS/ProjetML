@@ -59,6 +59,33 @@ void LinearModel::Predict(const double* X_test, int num_samples, int num_feature
     }
 }
 
+
+void LinearModel::ImageProcessing(const char* lien_Image) {
+ 
+    std::ifstream file(lien_Image, std::ios::binary | std::ios::ate);
+    if (!file.is_open()) {
+        std::cerr << "Impossible de charger les images." << std::endl;
+        return;
+    }
+
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    char* buffer = new char[size];
+    if (!file.read(buffer, size)) {
+        std::cerr << "Impossible de lire les informations de l'image." << std::endl;
+        delete[] buffer;
+        return;
+    }
+
+    file.close();
+
+  
+    std::cout << "Tilla de l'image: " << size << " bytes" << std::endl;
+
+    delete[] buffer;
+}
+
 LinearModel* Init() {
     return new LinearModel();
 }

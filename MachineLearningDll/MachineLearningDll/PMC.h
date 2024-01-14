@@ -16,7 +16,9 @@
 #include <cassert>
 #include <algorithm> 
 #include <functional>
-
+#include <fstream>
+#include <cstdlib>
+#include <cstring>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,7 +28,7 @@ extern "C" {
     PMC_API int PredictionPMCSize(void* pmc);
     PMC_API double* PredictPMC(void* pmc, const double* input, int input_size);
     PMC_API void DestroyPMC(void* pmc);
-
+    
 
 #ifdef __cplusplus
 }
@@ -50,6 +52,7 @@ public:
     double* predict(const double* input, int input_size);
     int getPredictionSize() const;
     void destroy();
+     void ImageProcessing(const char* image_path);
 
 private:
     double activation_function(double x);
