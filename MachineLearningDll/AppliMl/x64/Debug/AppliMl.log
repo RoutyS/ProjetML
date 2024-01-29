@@ -1,3 +1,2 @@
 ﻿  AppliMl.cpp
-D:\MachineLearning\ProjetML\MachineLearningDll\AppliMl\AppliMl.cpp(26,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   AppliMl.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\AppliMl.exe

@@ -1,31 +1,33 @@
 ﻿//Created by Elodie
 
-#ifdef LINEARMODEL_EXPORTS
-#define LINEARMODEL_API __declspec(dllexport)
+// linear_model.h
+
+#ifdef LINEAR_MODEL_EXPORTS
+#define LINEAR_MODEL_API __declspec(dllexport)
 #else
-#define LINEARMODEL_API __declspec(dllimport)
+#define LINEAR_MODEL_API __declspec(dllimport)
 #endif
 
-#include <fstream>
-#include <cstdlib>
-#include <cstring>
-
 class LinearModel {
-public:
-    LINEARMODEL_API void Train(const double* X_train, int num_samples, int num_features, const double* y_train, double learning_rate, int epoch);
-
-    LINEARMODEL_API void Predict(const double* X_test, int num_samples, int num_features, double* predictions);
-    LINEARMODEL_API void ImageProcessing(const char* image_path);
-
 private:
-    double* poids;
-    double bias;
+    int num_features;
+    double* weights;
+
+public:
+    LinearModel(int num_features);
+    ~LinearModel();
+    void train_regression(const double* X, const double* y, int num_samples, int num_features, double learning_rate, int iterations);
+    void train_classification(const double* X, const int* y, int num_samples, int num_features, double learning_rate, int iterations);
+    double predict_regression(const double* X, int num_features);
+    int predict_classification(const double* X, int num_features);
+    void printDebugInfo(int iteration) const;
 };
 
-extern "C" LINEARMODEL_API LinearModel * Init();
-
-extern "C" LINEARMODEL_API void Detruire(LinearModel * model);
-
-extern "C" LINEARMODEL_API void Entrainement(LinearModel * model, const double* X_train, int num_samples, int num_features, const double* y_train, double learning_rate, int epoch);
-
-extern "C" LINEARMODEL_API void Prediction(LinearModel * model, const double* X_test, int num_samples, int num_features, double* predictions);
+extern "C" {
+    LINEAR_MODEL_API LinearModel* create_linear_model(int num_features);
+    LINEAR_MODEL_API void train_regression(LinearModel* model, const double* X, const double* y, int num_samples, int num_features, double learning_rate, int iterations);
+    LINEAR_MODEL_API void train_classification(LinearModel* model, const double* X, const int* y, int num_samples, int num_features, double learning_rate, int iterations);
+    LINEAR_MODEL_API double predict_regression(LinearModel* model, const double* X, int num_features);
+    LINEAR_MODEL_API int predict_classification(LinearModel* model, const double* X, int num_features);
+    LINEAR_MODEL_API void destroy_linear_model(LinearModel* model);
+}
