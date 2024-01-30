@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 
-linear_model_dll = ctypes.CDLL("D:\\MachineLearning\\ProjetML\\MachineLearningDll\\x64\\Debug\\MachineLearningDll.dll")
+linear_model_dll = ctypes.CDLL("C:\\ProjetML\\MachineLearningDll\\x64\Debug\\MachineLearningDll.dll")
 
+ND_POINTER_INT = np.ctypeslib.ndpointer(dtype=np.int32, ndim=1, flags="C")
+ND_POINTER_FLOAT = np.ctypeslib.ndpointer(ctypes.c_double, ndim=1, flags="C")
 
 linear_model_dll.create_linear_model.restype = ctypes.POINTER(ctypes.c_void_p)
 linear_model_dll.create_linear_model.argtypes = [ctypes.c_int]
@@ -32,6 +34,22 @@ linear_model_dll.predict_classification.argtypes = [
 linear_model_dll.destroy_linear_model.restype = None
 linear_model_dll.destroy_linear_model.argtypes = [ctypes.c_void_p]
 
+#PMC
+linear_model_dll.CreatePMC.restype = ctypes.c_int
+linear_model_dll.CreatePMC.argtypes = [ND_POINTER_INT, ctypes.c_int]
+
+linear_model_dll.PredictPMC.restype = ND_POINTER_FLOAT
+linear_model_dll.PredictPMC.argtypes = [ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_bool]
+
+linear_model_dll.TrainPMC.restype = None
+linear_model_dll.TrainPMC.argtypes = [ctypes.c_int,ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_int]
+
+linear_model_dll.PredictionPMCSize.restype = ctypes.c_int
+linear_model_dll.PredictionPMCSize.argtypes = ctypes.c_int
+
+linear_model_dll.Destroy.restype = None
+linear_model_dll.Destroy.argtypes = ctypes.c_int
+
 def load_images_from_folder(folder, label):
     X = []
     y = []
@@ -55,8 +73,8 @@ def load_images_from_folder(folder, label):
 
 
 def load_image():
-    cars_folder = "D:\\TST\\Application\\Voitures"
-    motorcycles_folder = "D:\\TST\\Application\\Motos"
+    cars_folder = "C:\\ProjetML\\MachineLearningDll\\Application\\Voitures"
+    motorcycles_folder = "C:\\ProjetML\\MachineLearningDll\\Application\\Motos"
     X_cars, y_cars = load_images_from_folder(cars_folder, label=0)
     X_motorcycles, y_motorcycles = load_images_from_folder(motorcycles_folder, label=1)
     X = np.concatenate([X_cars, X_motorcycles])
@@ -134,6 +152,13 @@ def images_predictions(X, y_actual, predictions):
 
     plt.show()
 
+
+
+
+
+
+
+
 def main():
 
     X, y = load_image()
@@ -146,6 +171,8 @@ def main():
     prediction_classification = principal_function(X_classification, y_classification, X_test_classification)
     print("Classification Prediction:", prediction_classification)
     images_predictions(X_test_classification, y_test, prediction_classification)
+
+
 
 
 if __name__ == "__main__":

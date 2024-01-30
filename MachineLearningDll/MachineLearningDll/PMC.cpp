@@ -8,238 +8,217 @@
 #include <algorithm> 
 #include <functional>
 
-using namespace std;
+#define RANDOM() ((double)std::rand()/(double)RAND_MAX)
 
-PMC::PMC(const int* layer_sizes, int num_layers) {
- 
-    this->num_layers = num_layers;
 
-   
-    this->layer_sizes = new int[num_layers];
-    for (int i = 0; i < num_layers; ++i) {
-        this->layer_sizes[i] = layer_sizes[i];
-    }
+PMC::PMC(const std::vector<int>& npl)
+{
+    d = npl;
+    L = npl.size() - 1;
+    W = {};
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(-1.0, 1.0);
+    for (int l = 0; l < npl.size(); ++l)
+    {
+        W.push_back({});
+        if (l == 0)
+        {
+            for (int i = 0; i < d[l - 1] + 1; ++i)
+            {
+                W[l].push_back({});
+                for (int j = 0; j < d[l] + 1; ++j)
+                {
+                    if (j == 0)
+                    {
+                        W[l][i].push_back(0.0);
+                    }
+                    else
+                    {
+                        W[l][i].push_back(RANDOM() * 2.0 - 1.0);
+                    }
+                }
 
-    size_of_predictions = layer_sizes[num_layers - 1];
-
-    weights = new double** [num_layers - 1];
-    for (int i = 0; i < num_layers - 1; ++i) {
-        weights[i] = new double* [layer_sizes[i + 1]];
-        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
-            weights[i][j] = new double[layer_sizes[i] + 1];
-            // Initialisation des poids
-            for (int k = 0; k <= layer_sizes[i]; ++k) {
-                weights[i][j][k] = dis(gen);
             }
         }
     }
 
-  
-    activations = new double* [num_layers];
-    deltas = new double* [num_layers];
-    for (int i = 0; i < num_layers; ++i) {
-        activations[i] = new double[layer_sizes[i] + 1];
-        deltas[i] = new double[layer_sizes[i] + 1];
-    
-        for (int j = 0; j <= layer_sizes[i]; ++j) {
-            activations[i][j] = 1.0; 
-            deltas[i][j] = 0.0;
-        }
-    }
-}
-
-PMC::~PMC() {
-    
-    delete[] layer_sizes;
-	
-    for (int i = 0; i < num_layers - 1; ++i) {
-        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
-            delete[] weights[i][j];
-        }
-        delete[] weights[i];
-    }
-    delete[] weights;
-
-   
-    for (int i = 0; i < num_layers; ++i) {
-        delete[] activations[i];
-        delete[] deltas[i];
-    }
-    delete[] activations;
-    delete[] deltas;
-}
-
-void PMC::train(double* inputs, int input_width, int input_height, const double* expected_outputs, int outputs_size, double alpha, int max_iter) {
-   
-    for (int iter = 0; iter < max_iter; ++iter) {
-      
-        for (int i = 0; i < input_height; ++i) {
-           
-            forward_propagate(inputs + i * input_width);
-
-         
-            back_propagate(expected_outputs + i * outputs_size);
-            update_weights(alpha);
-        }
-      
-    }
-}
-void PMC::ImageProcessing(const char* lien_Image) {
-
-    std::ifstream file(lien_Image, std::ios::binary | std::ios::ate);
-    if (!file.is_open()) {
-        std::cerr << "Impossible de charger les images." << std::endl;
-        return;
-    }
-
-    std::streamsize size = file.tellg();
-    file.seekg(0, std::ios::beg);
-
-    char* buffer = new char[size];
-    if (!file.read(buffer, size)) {
-        std::cerr << "Impossible de lire les informations de l'image." << std::endl;
-        delete[] buffer;
-        return;
-    }
-
-    file.close();
-
-
-    std::cout << "Tilla de l'image: " << size << " bytes" << std::endl;
-
-}
-double* PMC::predict(const double* input, int input_size) {
-   
-    forward_propagate(input);
-
- 
-    double* output = new double[layer_sizes[num_layers - 1]];
-    for (int i = 0; i < layer_sizes[num_layers - 1]; ++i) {
-        output[i] = activations[num_layers - 1][i];
-    }
-    return output;
-}
-
-double PMC::activation_function(double x) {
-    
-    return 1.0 / (1.0 + exp(-x));
-}
-
-double PMC::activation_derivative(double x) {
-   
-    return x * (1.0 - x);
-}
-
-void PMC::forward_propagate(const double* input) {
-   
-    for (int i = 0; i < layer_sizes[0]; ++i) {
-        activations[0][i] = input[i];
-    }
-
-    
-    for (int i = 1; i < num_layers; ++i) {
-        for (int j = 0; j < layer_sizes[i]; ++j) {
-            double net_input = 0.0;
-
-          
-            for (int k = 0; k <= layer_sizes[i - 1]; ++k) {
-                net_input += weights[i - 1][j][k] * activations[i - 1][k];
+    X = {};
+    deltas = {};
+    for (int l = 0; l < npl.size(); ++l)
+    {
+        X.push_back({});
+        deltas.push_back({});
+        for (int j = 0; j < d[l] + 1; ++j)
+        {
+            deltas[l].push_back(0.0);
+            if (j == 0)
+            {
+                X[l].push_back(1.0);
             }
-
-            activations[i][j] = activation_function(net_input);
-        }
-    }
-}
-
-void PMC::back_propagate(const double* expected_outputs) {
-   
-    for (int i = 0; i < layer_sizes[num_layers - 1]; ++i) {
-    
-        deltas[num_layers - 1][i] = activation_derivative(activations[num_layers - 1][i]) * (expected_outputs[i] - activations[num_layers - 1][i]);
-    }
-
-   
-    for (int i = num_layers - 2; i > 0; --i) {
-        for (int j = 0; j < layer_sizes[i]; ++j) {
-            double error_sum = 0.0;
-
-         
-            for (int k = 0; k < layer_sizes[i + 1]; ++k) {
-                error_sum += weights[i][k][j] * deltas[i + 1][k];
-            }
-
-         
-            deltas[i][j] = activation_derivative(activations[i][j]) * error_sum;
-        }
-    }
-}
-
-void PMC::update_weights(double alpha) {
-   
-    for (int i = 0; i < num_layers - 1; ++i) {
-        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
-            for (int k = 0; k <= layer_sizes[i]; ++k) {
-              
-                weights[i][j][k] += alpha * deltas[i + 1][j] * activations[i][k];
+            else
+            {
+                X[l].push_back(0.0);
             }
         }
     }
 }
 
-int PMC::getPredictionSize() const {
-   
-    return size_of_predictions;
+PMC::~PMC() {}
+
+std::vector<double> PMC::predict(const std::vector<double>& input, bool is_Classification)
+{
+    propagate(input, is_Classification);
+    std::vector<double> result;
+    for (int i = 1; i < X[L].size(); i++)
+    {
+        result.push_back(X[L][i]);
+    }
+    return result;
 }
 
-void PMC::destroy() {
-    
-    delete[] layer_sizes;
+void PMC::train(const std::vector<std::vector<double>>& AllInput, const std::vector<std::vector<double>>& AllOutput, bool is_Classification, float alpha, int max_iter)
+{
+    for (int it = 0; it < max_iter; it++)
+    {
+        int k = RANDOM() * AllInput.size() - 1;
+        auto& input_k = AllInput[k];
+        auto& output_k = AllOutput[k];
+        propagate(input_k, is_Classification);
 
-
-    for (int i = 0; i < num_layers - 1; ++i) {
-        for (int j = 0; j < layer_sizes[i + 1]; ++j) {
-            delete[] weights[i][j];
+        for (int j = 1; j < d[L] + 1; j++)
+        {
+            deltas[L][j] = X[L][j] - output_k[j - 1];
+            if (is_Classification)
+            {
+                deltas[L][j] *= (1 - (X[L][j] * X[L][j]));
+            }
         }
-        delete[] weights[i];
-    }
-    delete[] weights;
 
-    for (int i = 0; i < num_layers; ++i) {
-        delete[] activations[i];
-        delete[] deltas[i];
+        for (int l = L; l >= 2; l--)
+        {
+            for (int i = 1; i < d[l - 1] + 1; i++)
+            {
+                double sum = 0.0;
+                for (int j = 1; j < d[l] + 1; j++)
+                {
+                    sum += W[l][i][j] * deltas[l][j];
+                }
+                deltas[l - 1][i] = (1 - (X[l - 1][i] * X[l - 1][i])) * sum;
+            }
+        }
+
+        for (int l = 1; l < L + 1; l++)
+        {
+            for (int i = 0; i < d[l - 1] + 1; i++)
+            {
+                for (int j = 1; j < d[l] + 1; j++)
+                {
+                    W[l][i][j] -= alpha * X[l - 1][i] * deltas[l][j];
+                }
+            }
+        }
     }
-    delete[] activations;
-    delete[] deltas;
+}
+
+void PMC::propagate(const std::vector<double>& input, bool is_Classification)
+{
+    for (int j = 1; j < d[0] + 1; j++)
+    {
+        X[0][j] = input[j - 1];
+    }
+
+    for (int l = 1; l < d.size(); l++)
+    {
+        for (int j = 1; j < d[l] + 1; j++)
+        {
+            double sum = 0;
+
+            for (int i = 0; i < d[l - 1] + 1; i++)
+            {
+                sum += W[l][i][j] * X[l - 1][i];
+            }
+
+            if (l < L || is_Classification)
+            {
+                sum = std::tanh(sum);
+            }
+            X[l][j] = sum;
+        }
+    }
 }
 
 
-extern "C" {
-
-    void* CreatePMC(const int* npl, int size) {
-        return new PMC(npl, size);
+void* CreatePMC(const int* npl, int size)
+{
+    std::vector<int> layers;
+    for (int i = 0; i < size; ++i) {
+        layers.push_back(npl[i]);
     }
+    PMC* pmc = new PMC(layers);
+    return (void*)pmc;
+}
 
-    void TrainPMC(void* pmc, double* inputs, int inputWidth, int inputHeight, const double* expected_outputs, int outputsSize, double alpha, int max_iter) {
-        static_cast<PMC*>(pmc)->train(inputs, inputWidth, inputHeight, expected_outputs, outputsSize, alpha, max_iter);
+double* PredictPMC(void* raw_pmc, const double* input, int input_size, double* output, int output_size, bool is_classification)
+{
+    PMC* pmc = (PMC*)raw_pmc;
+    std::vector<double> input_vec(input, input + input_size);
+    std::vector<double> result = pmc->predict(input_vec, is_classification);
+    if (result.size() == output_size) {
+        std::copy(result.begin(), result.end(), output);
     }
+}
 
-    int PredictionPMCSize(void* pmc) {
-        int predictionSize = static_cast<PMC*>(pmc)->getPredictionSize();
-
-        return predictionSize;
-    }
-
-    double* PredictPMC(void* pmc, const double* input, int inputSize) {
-        return static_cast<PMC*>(pmc)->predict(input, inputSize);
-    }
-
-    void DestroyPMC(void* pmc) {
-        delete static_cast<PMC*>(pmc);
-    }
+int PredictionPMCSize(void* pmc)
+{
 
 }
+
+
+void TrainPMC(void* raw_pmc, double* inputs, int sizeInputSubArray, int numberOfInputSubArray, const double* rawAllIntput, const double* rawAllOutput, int sizeOutputSubArray, int numberOfOutputSubArray, bool isClassification, double alpha, int max_iter)
+{
+    std::vector<std::vector<double>> allInput;
+    for (int i = 0; i < numberOfInputSubArray; ++i)
+    {
+        allInput.push_back({});
+
+        for (int j = 0; j < sizeInputSubArray; ++j)
+        {
+            int index = (i * sizeInputSubArray) + j;
+            allInput[i].push_back(rawAllIntput[index]);
+        }
+    }
+
+    std::vector<std::vector<double>> allOutput;
+    //TODO: the same but for allOutput
+    for (int i = 0; i >= 2; i--)
+    {
+        for (int j = 0; j < sizeOutputSubArray; ++j)
+        {
+            int index = (i * sizeOutputSubArray) + j;
+            allOutput[i].push_back(rawAllOutput[index]);
+        }
+    }
+    /* //
+    std::vector<std::vector<double>> allOutput;
+    for (int i = 0; i < numberOfOutputSubArray; ++i) {
+        allOutput.push_back({});
+        for (int j = 0; j < sizeOutputSubArray; ++j) {
+            int index = (i * sizeOutputSubArray) + j;
+            allOutput[i].push_back(rawAllOutput[index]);
+        }
+    }*/
+
+    // Fetch AllOutput
+
+    PMC& pmc = *(PMC*)raw_pmc;
+    pmc.train(allInput, allOutput, isClassification, alpha, max_iter);
+}
+
+void DestroyPMC(void* raw_pmc)
+{
+    PMC* pmc = (PMC*)raw_pmc;
+    delete pmc;
+}
+
+
+
 

@@ -20,46 +20,39 @@
 #include <cstdlib>
 #include <cstring>
 #ifdef __cplusplus
+
 extern "C" {
 #endif
 
-    PMC_API void* CreatePMC(const int* layer_sizes, int num_layers);
-    PMC_API void TrainPMC(void* pmc, double* inputs, int input_width, int input_height, const double* expected_outputs, int output_size, double alpha, int max_iter);
+    PMC_API void* CreatePMC(const int* npl, int size);
+    PMC_API void TrainPMC(void* raw_pmc, double* inputs, int sizeInputSubArray, int numberOfInputSubArray, const double* rawAllOutput, int sizeOutputSubArray, int numberOfOutputSubArray, bool isClassification, double alpha, int max_iter);
     PMC_API int PredictionPMCSize(void* pmc);
-    PMC_API double* PredictPMC(void* pmc, const double* input, int input_size);
-    PMC_API void DestroyPMC(void* pmc);
-    
+    double* PredictPMC(void* raw_pmc, const double* input, int input_size, double* output, int output_size, bool is_classification);
+    PMC_API void DestroyPMC(void* raw_pmc);
+
 
 #ifdef __cplusplus
 }
 #endif
 
 
-
-class PMC {
-private:
-    int* layer_sizes;
-    int num_layers;
-    double*** weights; 
-    double** activations; 
-    double** deltas;
-    int size_of_predictions;
-
+class PMC
+{
 public:
-    PMC(const int* layer_sizes, int num_layers);
-    ~PMC();  
-    void train(double* inputs, int input_width, int input_height, const double* expected_outputs, int output_size, double alpha, int max_iter);
-    double* predict(const double* input, int input_size);
-    int getPredictionSize() const;
-    void destroy();
-     void ImageProcessing(const char* image_path);
+    PMC(const std::vector<int>& npl);
+    ~PMC();
+    std::vector<double> predict(const std::vector<double>& input, bool is_Classification = true);
+    void train(const std::vector<std::vector<double>>& AllInput, const std::vector<std::vector<double>>& AllOutput, bool is_Classification = true, float alpha = 0.01, int max_iter = 1000);
 
 private:
-    double activation_function(double x);
-    double activation_derivative(double x);
-    void forward_propagate(const double* input);
-    void back_propagate(const double* expected_outputs);
-    void update_weights(double alpha);
+
+    std::vector<int> d;
+    std::vector<std::vector<std::vector<double>>> W;
+    std::vector<std::vector<double>> X;
+    std::vector<std::vector<double>> deltas;
+    int L;
+
+    void propagate(const std::vector<double>& input, bool is_Classification);
 
 };
 
