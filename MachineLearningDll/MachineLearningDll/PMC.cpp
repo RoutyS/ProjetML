@@ -146,7 +146,6 @@ void PMC::propagate(const std::vector<double>& input, bool is_Classification)
     }
 }
 
-
 void* CreatePMC(const int* npl, int size)
 {
     std::vector<int> layers;
@@ -165,11 +164,16 @@ double* PredictPMC(void* raw_pmc, const double* input, int input_size, double* o
     if (result.size() == output_size) {
         std::copy(result.begin(), result.end(), output);
     }
+
+    return output;
 }
 
-int PredictionPMCSize(void* pmc)
+int PredictionPMCSize(void* raw_pmc)
 {
-
+    PMC* pmc = (PMC*)raw_pmc;
+    std::vector<double> input(1, 0.0); 
+    std::vector<double> result = pmc->predict(input, false); 
+    return result.size();
 }
 
 
@@ -186,18 +190,7 @@ void TrainPMC(void* raw_pmc, double* inputs, int sizeInputSubArray, int numberOf
             allInput[i].push_back(rawAllIntput[index]);
         }
     }
-
-    std::vector<std::vector<double>> allOutput;
-    //TODO: the same but for allOutput
-    for (int i = 0; i >= 2; i--)
-    {
-        for (int j = 0; j < sizeOutputSubArray; ++j)
-        {
-            int index = (i * sizeOutputSubArray) + j;
-            allOutput[i].push_back(rawAllOutput[index]);
-        }
-    }
-    /* //
+    
     std::vector<std::vector<double>> allOutput;
     for (int i = 0; i < numberOfOutputSubArray; ++i) {
         allOutput.push_back({});
@@ -205,7 +198,7 @@ void TrainPMC(void* raw_pmc, double* inputs, int sizeInputSubArray, int numberOf
             int index = (i * sizeOutputSubArray) + j;
             allOutput[i].push_back(rawAllOutput[index]);
         }
-    }*/
+    }
 
     // Fetch AllOutput
 

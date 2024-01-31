@@ -1,14 +1,1 @@
-﻿  LinearModel.cpp
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(90,14): warning C4273: 'create_linear_model' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(27,35): message : voir la définition précédente de 'create_linear_model'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(95,6): warning C4273: 'train_regression' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(28,27): message : voir la définition précédente de 'train_regression'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(102,6): warning C4273: 'train_classification' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(29,27): message : voir la définition précédente de 'train_classification'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(107,8): warning C4273: 'predict_regression' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(30,29): message : voir la définition précédente de 'predict_regression'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(112,5): warning C4273: 'predict_classification' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(31,26): message : voir la définition précédente de 'predict_classification'
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.cpp(118,6): warning C4273: 'destroy_linear_model' : liaison DLL incohérente
-D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\LinearModel.h(32,27): message : voir la définition précédente de 'destroy_linear_model'
-  MachineLearningDll.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
+﻿  MachineLearningDll.vcxproj -> C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll

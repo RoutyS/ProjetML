@@ -35,14 +35,14 @@ linear_model_dll.destroy_linear_model.restype = None
 linear_model_dll.destroy_linear_model.argtypes = [ctypes.c_void_p]
 
 #PMC
-linear_model_dll.CreatePMC.restype = ctypes.c_int
+linear_model_dll.CreatePMC.restype = ctypes.c_void_p
 linear_model_dll.CreatePMC.argtypes = [ND_POINTER_INT, ctypes.c_int]
 
 linear_model_dll.PredictPMC.restype = ND_POINTER_FLOAT
 linear_model_dll.PredictPMC.argtypes = [ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_bool]
 
 linear_model_dll.TrainPMC.restype = None
-linear_model_dll.TrainPMC.argtypes = [ctypes.c_int,ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_int]
+linear_model_dll.TrainPMC.argtypes = [ctypes.c_int, ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_int]
 
 linear_model_dll.PredictionPMCSize.restype = ctypes.c_int
 linear_model_dll.PredictionPMCSize.argtypes = ctypes.c_int
@@ -154,8 +154,19 @@ def images_predictions(X, y_actual, predictions):
 
 
 
+def create_pmc(layers):
+    return linear_model_dll.CreatePMC(layers, len(layers))
 
+def train_pmc(pmc, inputs, input_size, num_inputs, raw_all_input, raw_all_output, size_output_subarray, num_outputs, is_classification, alpha, max_iter):
+    linear_model_dll.TrainPMC(pmc, inputs, input_size, num_inputs, raw_all_input, raw_all_output, size_output_subarray, num_outputs, is_classification, alpha, max_iter)
 
+def predict_pmc(pmc, input, input_size, output_size, is_classification):
+    output = np.zeros(output_size, dtype=np.float64)
+    linear_model_dll.PredictPMC(pmc, input, input_size, output, output_size, is_classification)
+    return output
+
+def destroy_pmc(pmc):
+    linear_model_dll.DestroyPMC(pmc)
 
 
 
@@ -164,6 +175,27 @@ def main():
     X, y = load_image()
 
     X_train, X_test, y_train, y_test = train(X, y, test_size=0.2, random_state=42)
+
+    # creation du PMC
+    layers = [input_size, hidden_layer_size, output_size]
+    pmc = create_pmc(layers)
+
+    # entrainement du PMC
+    train_pmc(pmc, X_train.ctypes.data_as(ctypes.POINTER(ctypes.c_double)), X_train.shape[1], X_train.shape[0],
+              X_train.flatten(), y_train.flatten(), y_train.shape[1], y_train.shape[0], is_classification=True,
+              alpha=0.01, max_iter=100)
+
+    # les prédictions PMC
+    predictions = predict_pmc(pmc, X_test.ctypes.data_as(ctypes.POINTER(ctypes.c_double)), X_test.shape[1],
+                              y_test.shape[1], is_classification=True)
+    print("Classification Prediction:", predictions)
+
+
+    #resultat
+    images_predictions(X_test, y_test, predictions)
+    destroy_pmc(pmc)
+
+
 
     X_classification = np.concatenate([np.random.random((50, 64, 64, 3)) * 0.9 + np.ones((50, 1, 1, 3)), np.random.random((50, 64, 64, 3)) * 0.9 + np.ones((50, 1, 1, 3)) * 2])
     y_classification = np.concatenate([np.ones((50, 1)), np.zeros((50, 1))])
