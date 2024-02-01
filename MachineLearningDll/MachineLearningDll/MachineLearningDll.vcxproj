@@ -145,6 +145,7 @@
     <ClInclude Include="LinearModel.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PMC.h" />
+    <ClInclude Include="RBFN.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -156,6 +157,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PMC.cpp" />
+    <ClCompile Include="RBFN.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
