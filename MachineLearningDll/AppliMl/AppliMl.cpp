@@ -3,44 +3,30 @@
 #include "PMC.h"
 #include <vector>
 #include <random> 
-#include "RBFN.h"
-#include <cmath>
 
 int main() {
-    // Known dataset for testing
-    const int num_samples = 10;
-    const float inputs[num_samples] = { /* Your input values here */ };
-    const float targets[num_samples] = { /* Your target values here */ };
-    const int classification_targets[num_samples] = { /* Your classification targets here */ };
+    /*const int num_features = 2;
+    const int num_samples = 3;
 
-    // RBFN instance
-    RBFN rbfInstance;
+    // Training data
+    double X_train[num_samples * num_features] = { 1, 1, 2, 3, 3, 3 };
+    double y_train[num_samples] = { 1, -1, -1 };
 
-    // regression
-    rbfInstance.train(inputs, targets, num_samples, 0.0001, 1000);
- 
-    std::cout << "Trained Weights for Regression:\n";
-    for (int j = 0; j < rbfInstance.num_centers; ++j) {
-        std::cout << "Weight[" << j << "]: " << rbfInstance.weights[j] << "\n";
-    }
+    // Create an instance of LinearModel for regression
+    LinearModel regression_model(num_features);
 
-    //classification
-    rbfInstance.train_classification(inputs, classification_targets, num_samples, 0.001, 10000);
+    // Train the model
+    regression_model.train(X_train, y_train, num_samples, num_features);
 
+    // Test data
+    double X_test[num_features] = { 4, 4 }; // Test with new data
 
-    std::cout << "Trained Weights for Classification:\n";
-    for (int j = 0; j < rbfInstance.num_centers; ++j) {
-        std::cout << "Weight[" << j << "]: " << rbfInstance.weights[j] << "\n";
-    }
+    // Make regression prediction
+    double regression_prediction = regression_model.predict(X_test, num_features);
 
-
-    for (int i = 0; i < num_samples; ++i) {
-        float input = inputs[i];
-        float regression_prediction = rbfInstance.rbf_approximation(input);
-        int classification_prediction = rbfInstance.predict_classification(input);
-
-        std::cout << "Input: " << input << ", Regression Prediction: " << regression_prediction << ", Classification Prediction: " << classification_prediction << "\n";
-    }
+    // Display regression prediction
+    std::cout << "Regression Prediction: " << regression_prediction << std::endl;
 
     return 0;
+    */
 }

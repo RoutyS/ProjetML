@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "LinearModel.h"
+
 #include <iostream>
 #include <vector>
 
