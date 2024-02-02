@@ -60,7 +60,6 @@ def load_images_from_folder(folder, label):
             img = cv2.imread(img_path)
 
             if img is not None:
-                # Resize the image to a common size (e.g., 64x64 pixels)
                 img = cv2.resize(img, (64, 64))
                 # Flatten the image into a 1D array
                 features = img.flatten()
@@ -76,19 +75,18 @@ def load_images_from_folder(folder, label):
 
 
 def load_image_data():
-    # Specify the paths to your image folders for cars and motorcycles
+
     cars_folder = "D:\\TST\\Application\\Voitures"
     motorcycles_folder = "D:\\TST\\Application\\Motos"
 
-      # Lists to store features (X) and labels (y)
+
     X_cars, y_cars = load_images_from_folder(cars_folder, label=0)
     X_motorcycles, y_motorcycles = load_images_from_folder(motorcycles_folder, label=1)
 
-    # Combine the data from both classes
+
     X = np.concatenate([X_cars, X_motorcycles])
     y = np.concatenate([y_cars, y_motorcycles])
 
-    # Convert lists to NumPy arrays
     X = np.array(X)
     y = np.array(y)
 
@@ -142,12 +140,11 @@ def simple_train_test_split(X, y, test_size=0.2, random_state=None):
 def display_images_with_predictions(X, y_actual, predictions):
     num_samples = len(X)
 
-    # If predictions is a scalar, convert it to a 1D array
+
     predictions = np.asarray(predictions)
     if predictions.ndim == 0:
         predictions = np.array([predictions])
 
-    # Determine the number of rows and columns for subplots
     num_rows = 2
     num_cols = (num_samples + 1) // 2
 
@@ -159,7 +156,6 @@ def display_images_with_predictions(X, y_actual, predictions):
         img = X[i].reshape(img_shape)
         label_actual = "Car" if y_actual[i] == 0 else "Motorcycle"
 
-        # Map the prediction value to the corresponding label
         label_pred = "Car" if predictions[i] == 0 else "Motorcycle"
 
         axes[i // num_cols, i % num_cols].imshow(cv2.cvtColor(img.astype(np.uint8), cv2.COLOR_BGR2RGB))
@@ -175,7 +171,6 @@ def main():
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = simple_train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Classification Example
     X_classification = np.concatenate([np.random.random((50, 64, 64, 3)) * 0.9 + np.ones((50, 1, 1, 3)), np.random.random((50, 64, 64, 3)) * 0.9 + np.ones((50, 1, 1, 3)) * 2])
     y_classification = np.concatenate([np.ones((50, 1)), np.zeros((50, 1))])
     X_test_classification = X_test.reshape((X_test.shape[0], 64, 64, 3))
@@ -183,9 +178,10 @@ def main():
     prediction_classification = principal_function(X_classification, y_classification, X_test_classification)
     print("Classification Prediction:", prediction_classification)
 
-    # Display images with predictions for classification
+
     display_images_with_predictions(X_test_classification, y_test, prediction_classification)
 
 
 if __name__ == "__main__":
     main()
+
