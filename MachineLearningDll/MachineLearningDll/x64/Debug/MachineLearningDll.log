@@ -1,1 +1,25 @@
-﻿  MachineLearningDll.vcxproj -> C:\Users\ruth9\Desktop\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll
+﻿  RBFN.cpp
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(6,14): warning C4273: 'RBFN::RBFN' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(19,5): message : voir la définition précédente de '{ctor}'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(8,24): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(13,44): warning C4273: 'RBFN::rbf_approximation' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(21,24): message : voir la définition précédente de 'rbf_approximation'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(16,20): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(25,111): warning C4273: 'RBFN::train' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(22,23): message : voir la définition précédente de 'train'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(36,53): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(42,66): warning C4273: 'rbf_approximation_instance' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(35,24): message : voir la définition précédente de 'rbf_approximation_instance'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(45,124): warning C4273: 'RBFN::train_classification' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(24,23): message : voir la définition précédente de 'train_classification'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(51,27): warning C4305: '=' : troncation de 'double' à 'float'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(68,28): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(77,47): warning C4273: 'RBFN::predict_classification' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(26,22): message : voir la définition précédente de 'predict_classification'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(83,142): warning C4273: 'train_classification_rbfn' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(37,23): message : voir la définition précédente de 'train_classification_rbfn'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(86,65): warning C4273: 'predict_classification_rbfn' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(38,22): message : voir la définition précédente de 'predict_classification_rbfn'
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.cpp(89,129): warning C4273: 'train_rbfn' : liaison DLL incohérente
+D:\MachineLearning\ProjetML\MachineLearningDll\MachineLearningDll\RBFN.h(36,23): message : voir la définition précédente de 'train_rbfn'
+  MachineLearningDll.vcxproj -> D:\MachineLearning\ProjetML\MachineLearningDll\x64\Debug\MachineLearningDll.dll

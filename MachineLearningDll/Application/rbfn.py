@@ -1,6 +1,6 @@
 import ctypes
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 rbfn_dll = ctypes.CDLL("D:\\MachineLearning\\ProjetML\\MachineLearningDll\\x64\\Debug\\MachineLearningDll.dll")
 class RBFN(ctypes.Structure):
@@ -24,21 +24,41 @@ rbfn_dll.predict_classification_rbfn.restype = ctypes.c_int
 if __name__ == "__main__":
     rbf_instance = RBFN()
 
-    inputs = np.array([1.0, 2.0, 3.0, 4.0, 5.0], dtype=np.float32)
-    targets = np.array([0.1, 0.2, 0.3, 0.4, 0.5], dtype=np.float32)
+    # Données d'entraînement
+    X_train = np.array([
+        [1, 1],
+        [2, 3],
+        [3, 3]
+    ], dtype=np.float32)
+    Y_train = np.array([
+        1,
+        -1,
+        -1
+    ], dtype=np.int32)
 
-    rbfn_dll.train_rbfn(ctypes.byref(rbf_instance), inputs.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
-                        targets.ctypes.data_as(ctypes.POINTER(ctypes.c_float)), len(inputs), 0.1, 100)
 
-    input_value = 2.5
-    result = rbfn_dll.rbf_approximation_instance(input_value, ctypes.byref(rbf_instance))
-    print(f'RBF Approximation result  {input_value}: {result}')
+    rbfn_dll.train_classification_rbfn(ctypes.byref(rbf_instance),
+                                       X_train.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
+                                       Y_train.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
+                                       len(X_train), 0.01, 10000)
 
-    classification_targets = np.array([0, 1, 0, 1, 1], dtype=np.int32)
-    rbfn_dll.train_classification_rbfn(ctypes.byref(rbf_instance), inputs.ctypes.data_as(ctypes.POINTER(ctypes.c_float)),
-                                       classification_targets.ctypes.data_as(ctypes.POINTER(ctypes.c_int)),
-                                       len(inputs), 0.1, 100)
+    # Points de test
+    X_test = np.array([
+        [1.0, 1.5],
+        [2.5, 3.5]
+    ], dtype=np.float32)
 
-    classification_input = 3.5
-    prediction = rbfn_dll.predict_classification_rbfn(ctypes.byref(rbf_instance), classification_input)
-    print(f'Classification prediction for input {classification_input}: {prediction}')
+
+    predictions = [rbfn_dll.predict_classification_rbfn(ctypes.byref(rbf_instance), float(x[0])) for x in X_test]
+
+
+    plt.scatter(X_train[Y_train == 1, 0], X_train[Y_train == 1, 1], color='blue', label='Classe 1')
+    plt.scatter(X_train[Y_train == -1, 0], X_train[Y_train == -1, 1], color='red', label='Classe -1')
+
+
+    for i, pred in enumerate(predictions):
+        color = 'blue' if pred == 1 else 'red'
+        plt.scatter(X_test[i, 0], X_test[i, 1], color=color, marker='x', label=f'Point de Test {i+1}')
+
+    plt.legend()
+    plt.show()

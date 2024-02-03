@@ -7,14 +7,17 @@ RBFN::RBFN() {
     for (int i = 0; i < num_centers; ++i) {
         centers[i] = i + 1.0;
         sigmas[i] = 1.0;
+        weights[i] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);  
     }
 }
-
 float RBFN::rbf_approximation(float input) {
     float output = 0.0f;
     for (int i = 0; i < num_centers; ++i) {
-        output += weights[i] * std::exp(-(std::pow(input - centers[i], 2)) / (2 * std::pow(sigmas[i], 2)));
+        float term = std::exp(-(std::pow(input - centers[i], 2)) / (2 * std::pow(sigmas[i], 2)));
+        std::cout << "Term " << i << ": " << term << "\n";
+        output += weights[i] * term;
     }
+    std::cout << "Output: " << output << "\n";
     return output;
 }
 
@@ -45,7 +48,7 @@ void RBFN::train_classification(const float* inputs, const int* targets, int num
 
 
     for (int j = 0; j < num_centers; ++j) {
-        weights[j] = 0.01;
+        weights[j] = 0.001;
     }
 
 
@@ -73,7 +76,7 @@ void RBFN::train_classification(const float* inputs, const int* targets, int num
 int RBFN::predict_classification(float input) {
     float result = rbf_approximation(input);
 
-    return (result >= 0.001) ? 1 : 0;
+    return (result >= 0.5) ? 1 : -1;  // Utiliser -1 pour représenter la classe négative
 }
 
 void train_classification_rbfn(RBFN* rbfInstance, const float* inputs, const int* targets, int num_samples, float learning_rate, int epochs) {
