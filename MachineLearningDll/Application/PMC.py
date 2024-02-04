@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 
-PMC_dll = ctypes.CDLL("C:\\ProjetML\\MachineLearningDll\\x64\Debug\\MachineLearningDll.dll")
+PMC_dll = ctypes.CDLL("D:\\MachineLearning\\ProjetML\\MachineLearningDll\\x64\\Debug\\MachineLearningDll.dll")
 
 ND_POINTER_INT = np.ctypeslib.ndpointer(dtype=np.int32, ndim=1, flags="C")
 ND_POINTER_FLOAT = np.ctypeslib.ndpointer(ctypes.c_double, ndim=1, flags="C")
