@@ -3,9 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import os
+import PMC
 
-linear_model_dll = ctypes.CDLL("D:\\MachineLearning\\ProjetML\\MachineLearningDll\\x64\\Debug\\MachineLearningDll.dll")
+#linear_model_dll = ctypes.CDLL("D:\\MachineLearning\\ProjetML\\MachineLearningDll\\x64\\Debug\\MachineLearningDll.dll")
+linear_model_dll = ctypes.CDLL("C:\\Users\\ruth9\\Desktop\\ProjetML\\MachineLearningDll\\x64\\Debug\\MachineLearningDll.dll")
 
+from PMC import create_pmc, train_pmc, predict_pmc, destroy_pmc
 
 linear_model_dll.create_linear_model.restype = ctypes.POINTER(ctypes.c_void_p)
 linear_model_dll.create_linear_model.argtypes = [ctypes.c_int]
@@ -49,6 +52,24 @@ linear_model_dll.predict_classification.argtypes = [
 linear_model_dll.destroy_linear_model.restype = None
 linear_model_dll.destroy_linear_model.argtypes = [ctypes.c_void_p]
 
+
+#PMC
+linear_model_dll.CreatePMC.restype = ctypes.c_void_p
+linear_model_dll.CreatePMC.argtypes = [ND_POINTER_INT, ctypes.c_int]
+
+linear_model_dll.PredictPMC.restype = ND_POINTER_FLOAT
+linear_model_dll.PredictPMC.argtypes = [ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_bool]
+
+linear_model_dll.TrainPMC.restype = None
+linear_model_dll.TrainPMC.argtypes = [ctypes.c_int, ND_POINTER_FLOAT, ctypes.c_int, ctypes.c_int]
+
+linear_model_dll.PredictionPMCSize.restype = ctypes.c_int
+linear_model_dll.PredictionPMCSize.argtypes = ctypes.c_int
+
+linear_model_dll.Destroy.restype = None
+linear_model_dll.Destroy.argtypes = ctypes.c_int
+
+
 def load_images_from_folder(folder, label):
     X = []
     y = []
@@ -77,8 +98,10 @@ def load_images_from_folder(folder, label):
 
 def load_image_data():
 
-    cars_folder = "D:\\TST\\Application\\Voitures"
-    motorcycles_folder = "D:\\TST\\Application\\Motos"
+    #cars_folder = "D:\\TST\\Application\\Voitures"
+    cars_folder = "C:\\TST\\Application\\Voitures"
+    #motorcycles_folder = "D:\\TST\\Application\\Motos"
+    motorcycles_folder = "C:\\TST\\Application\\Motos"
 
 
     X_cars, y_cars = load_images_from_folder(cars_folder, label=0)

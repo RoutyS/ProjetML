@@ -8,7 +8,6 @@
 #define PMC_API __declspec(dllimport)
 #endif
 
-
 #include <random>
 #include <iostream>
 #include <cmath>
@@ -34,7 +33,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-
 
 class PMC
 {

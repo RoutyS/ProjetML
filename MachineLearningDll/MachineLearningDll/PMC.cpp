@@ -200,7 +200,6 @@ void TrainPMC(void* raw_pmc, double* inputs, int sizeInputSubArray, int numberOf
         }
     }
 
-    // Fetch AllOutput
 
     PMC& pmc = *(PMC*)raw_pmc;
     pmc.train(allInput, allOutput, isClassification, alpha, max_iter);

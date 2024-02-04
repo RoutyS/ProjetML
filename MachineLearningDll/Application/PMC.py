@@ -39,4 +39,66 @@ def predict_pmc(pmc, input, input_size, output_size, is_classification):
 def destroy_pmc(pmc):
     PMC_dll.DestroyPMC(pmc)
 
+def PMClinearSimpleClassification(pmc_model):
+    # Données pour le test de classification linéaire simple
+    X = np.array([[1, 1], [2, 3], [3, 3]])
+    Y = np.array([1, -1, -1])
 
+    # Entraîner le modèle PMC
+    train_pmc(pmc_model, X, Y)
+
+    # Effectuer des prédictions
+    predictions = np.zeros(Y.shape)
+    for i, x in enumerate(X):
+        predict_pmc(pmc_model, x, predictions[i], len(x), 1, True)
+
+    # Visualiser les résultats
+    for i, (x, pred) in enumerate(zip(X, predictions)):
+        color = 'blue' if pred > 0 else 'red'
+        plt.scatter(x[0], x[1], color=color)
+
+    plt.show()
+    plt.clf()
+
+def PMClinearMultiClassification(pmc_model):
+    # Données pour le test "linéaire multi"
+    X = np.concatenate([np.random.random((50, 2)) * 0.9 + np.array([1, 1]),
+                        np.random.random((50, 2)) * 0.9 + np.array([2, 2])])
+    Y = np.concatenate([np.ones((50, 1)), np.ones((50, 1)) * -1.0])
+
+    # Entraîner le PMC sur ces données
+    train_pmc(pmc_model, X, Y)
+
+    # Effectuer des prédictions
+    predictions = np.zeros(Y.shape)
+    for i, x in enumerate(X):
+        predictions[i] = predict_pmc(pmc_model, x, len(x), 1, True)
+
+    # Visualiser les résultats
+    plt.scatter(X[0:50, 0], X[0:50, 1], color='blue')
+    plt.scatter(X[50:100, 0], X[50:100, 1], color='red')
+    plt.show()
+    plt.clf()
+
+
+def main ():
+    # Définir la structure du PMC test linear simple
+    layers = np.array([2, 1], dtype=np.int32)
+
+    # Définir la structure du PMC test linear simple
+    layers = np.array([2, 1], dtype=np.int32)
+
+    # Créer le modèle PMC
+    pmc_model = create_pmc(layers)
+
+    # Effectuer le test de classification linéaire
+    PMClinearSimpleClassification(pmc_model)
+
+    # Effectuer le test linéaire multi
+    test_multi_linear_classification(pmc_model)
+
+    # Libérer les ressources du modèle PMC
+    destroy_pmc(pmc_model)
+
+if __name__ == "__main__":
+    main()
